@@ -2,6 +2,6 @@
 name: Connector
 version: 5.18.0
 main: nin\Connector\Main
-api: [5.18.0, 5.18.1]
+api: [5.18.0 5.18.1]
 src-namespace-prefix: nin\Connector
 ...
