@@ -43,7 +43,7 @@ class Main extends PluginBase implements Listener {
     public function onPlayerJoin(PlayerJoinEvent $event): void {
         $player = $event->getPlayer();
         $version = $this->getDescription()->getVersion();
-        $message = "§7[§eConnector§7] §cThis server uses Connector v{$version}\n§rCommands\n§a!reconnect §r- Reconnect to the current Server";
+        $message = "§7[§eConnector§7] §cThis server uses Connector v{$version}\n§eConnector supports API 5.18.0 or 5.18.1\n§rCommands\n§a!reconnect §r- Reconnect to the current Server";
         $player->sendMessage($message);
 
         if ($this->disableJoinMessage) {
