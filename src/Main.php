@@ -47,7 +47,7 @@ class Main extends PluginBase implements Listener {
         $version = $this->getDescription()->getVersion();
 
         if (!$this->disableConnectorMessage) {
-            $message = "§7[§eConnector§7] §cThis server uses Connector v{$version}\n§eConnector supports API 5.18.0 or 5.18.1\n§uActive Commands\n§a!reconnect §r- §7Reconnect to the current Server";
+            $message = "§7[§eConnector§7] §cThis server uses Connector v{$version}\n§eConnector supports API 5.18.0 or 5.18.1\n§uActive Commands\n§a!reconnect §r- §7Connect to the server from the config";
             $player->sendMessage($message);
         }
 
