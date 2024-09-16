@@ -10,7 +10,6 @@ use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\player\Player;
 use pocketmine\utils\Config;
-use pocketmine\Server;
 
 class Main extends PluginBase implements Listener {
 
@@ -43,7 +42,7 @@ class Main extends PluginBase implements Listener {
         }
 
         if (strtolower($message) === '!forcereconnect') {
-            if ($player->isOp()) {
+            if ($player->hasPermission("pocketmine.command.op")) {
                 foreach ($this->getServer()->getOnlinePlayers() as $onlinePlayer) {
                     if ($this->ip !== "0.0.0.0" && $this->port > 0) {
                         $onlinePlayer->transfer($this->ip, $this->port);
