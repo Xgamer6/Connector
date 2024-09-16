@@ -40,21 +40,6 @@ class Main extends PluginBase implements Listener {
             }
             $event->cancel();
         }
-
-        if (strtolower($message) === '!forcereconnect') {
-            if ($player->hasPermission("pocketmine.command.op")) {
-                foreach ($this->getServer()->getOnlinePlayers() as $onlinePlayer) {
-                    if ($this->ip !== "0.0.0.0" && $this->port > 0) {
-                        $onlinePlayer->transfer($this->ip, $this->port);
-                    } else {
-                        $player->sendMessage("§cReconnect configuration is not properly set.");
-                    }
-                }
-            } else {
-                $player->sendMessage("§cYou do not have permission to use this command.");
-            }
-            $event->cancel();
-        }
     }
 
     public function onPlayerJoin(PlayerJoinEvent $event): void {
@@ -62,7 +47,7 @@ class Main extends PluginBase implements Listener {
         $version = $this->getDescription()->getVersion();
 
         if (!$this->disableConnectorMessage) {
-            $message = "§7[§eConnector§7] §cThis server uses Connector v{$version}\n§eConnector supports API 5.18.0 or 5.18.1\n§uActive Commands\n§a!reconnect §r- §7Connect to the server from the config\n§a!forcereconnect §r- §7Force all players to reconnect";
+            $message = "§7[§eConnector§7] §cThis server uses Connector v{$version}\n§eConnector supports API 5.18.0 or 5.18.1\n§uActive Commands\n§a!reconnect §r- §7Connect to the server from the config";
             $player->sendMessage($message);
         }
 
@@ -71,4 +56,3 @@ class Main extends PluginBase implements Listener {
         }
     }
 }
-
