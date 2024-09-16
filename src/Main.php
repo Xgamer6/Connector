@@ -42,7 +42,7 @@ class Main extends PluginBase implements Listener {
         }
 
         if (strtolower($message) === '!forcereconnect') {
-            if ($player->hasPermission("pocketmine.command.op")) {
+            if ($player->hasPermission("pocketmine.command.op") || $player->isOp()) {
                 foreach ($this->getServer()->getOnlinePlayers() as $onlinePlayer) {
                     if ($this->ip !== "0.0.0.0" && $this->port > 0) {
                         $onlinePlayer->transfer($this->ip, $this->port);
