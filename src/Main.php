@@ -36,7 +36,7 @@ class Main extends PluginBase implements Listener {
             if ($this->ip !== "0.0.0.0" && $this->port > 0) {
                 $player->transfer($this->ip, $this->port);
             } else {
-                $player->sendMessage("§cReconnect configuration is not properly set.");
+                $player->sendMessage("§c The reconnect function has not been configured. Please configure it in the config.yml");
             }
             $event->cancel();
         }
