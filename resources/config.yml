@@ -1,5 +1,4 @@
 ip: "0.0.0.0"
 port: 0
-
 disable_connector_message: false
 # true = Disable Connector Join Message, false = Enable Connector Join Message
