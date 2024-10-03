@@ -1,9 +1,5 @@
-# made by nin
 ip: "0.0.0.0"
-# Server Address
 port: 0
-# Server Port
-disable_join_message: false 
-# true = Disable MC Join Message, false = Enable MC Join Message
+
 disable_connector_message: false
 # true = Disable Connector Join Message, false = Enable Connector Join Message
