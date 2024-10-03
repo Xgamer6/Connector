@@ -24,16 +24,6 @@ class Main extends PluginBase implements Listener {
         $this->port = $config->get("port", 0);
         $this->disableJoinMessage = $config->get("disable_join_message", false);
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->copyContactFile();
-    }
-
-    private function copyContactFile(): void {
-        $source = $this->getFile() . "resources/contact.txt";
-        $destination = $this->getDataFolder() . "contact.txt";
-
-        if (!file_exists($destination)) {
-            copy($source, $destination);
-        }
     }
 
     public function onPlayerChat(PlayerChatEvent $event): void {
