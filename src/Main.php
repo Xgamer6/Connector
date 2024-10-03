@@ -16,7 +16,6 @@ class Main extends PluginBase implements Listener {
     private string $ip;
     private int $port;
     private bool $disableJoinMessage;
-    private bool $disableConnectorMessage;
 
     protected function onEnable(): void {
         $this->saveDefaultConfig();
@@ -24,8 +23,17 @@ class Main extends PluginBase implements Listener {
         $this->ip = $config->get("ip", "0.0.0.0");
         $this->port = $config->get("port", 0);
         $this->disableJoinMessage = $config->get("disable_join_message", false);
-        $this->disableConnectorMessage = $config->get("disable_connector_message", false);
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
+        $this->copyContactFile();
+    }
+
+    private function copyContactFile(): void {
+        $source = $this->getFile() . "resources/contact.txt";
+        $destination = $this->getDataFolder() . "contact.txt";
+
+        if (!file_exists($destination)) {
+            copy($source, $destination);
+        }
     }
 
     public function onPlayerChat(PlayerChatEvent $event): void {
@@ -46,10 +54,8 @@ class Main extends PluginBase implements Listener {
         $player = $event->getPlayer();
         $version = $this->getDescription()->getVersion();
 
-        if (!$this->disableConnectorMessage) {
-            $message = "§7[§eConnector§7] §cThis server uses Connector v{$version}\n§eConnector supports API 5.19.0\n§uActive Commands\n§a!reconnect §r- §7Connect to the server from the config";
-            $player->sendMessage($message);
-        }
+        $message = "§7[§eConnector§7] §cThis server uses Connector v{$version}\n§eConnector supports API 5.19.0\n§uActive Commands\n§a!reconnect §r- §7Connect to the server from the config";
+        $player->sendMessage($message);
 
         if ($this->disableJoinMessage) {
             $event->setJoinMessage("");
